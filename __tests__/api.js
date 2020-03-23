@@ -1,7 +1,13 @@
+const express = require("express");
 const app = require('../app')
 const request = require('supertest')
 let server;
 
+
+const app = express();
+app.get('/',function(req,res){
+  res.send('server ist läuft')
+})
 describe('API Request', () => {
   test('should be 200', async done => {
     const response = await request(app)
@@ -21,3 +27,4 @@ beforeAll(async (done) => {
 afterAll(async () => {
   await server.close();
 });
+module.exports = app;
